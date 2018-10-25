@@ -179,10 +179,10 @@ client.on("message", msg => {
 
 client.on('message', message => {
     if (message.author.bot) return;
-     if (message.content === prefix + "help-admin") {
+     if (message.content === '-' + "help") {
          if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply(`
          
-         **لست من المشرفين لن يتم ارسال الرسالة إليك**
+         **no permission**
          
          
          `);
