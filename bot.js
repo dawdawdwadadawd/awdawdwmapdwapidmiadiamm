@@ -78,4 +78,12 @@ client.on('message', message => {
     }
 });//t
 
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" هلا !!");
+    }
+});//t
+
 client.login(process.env.BOT_TOKEN);
