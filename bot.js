@@ -27,6 +27,7 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
+
 client.on('message',message =>{
     var prefix = "-";
     if(message.content.startsWith(prefix + 'top')) {
