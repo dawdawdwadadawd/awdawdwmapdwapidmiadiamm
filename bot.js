@@ -73,7 +73,7 @@ client.on('message', message => {
         .setTitle('Click Here')
         .setURL(`${omar.avatarURL}`)
         .setImage(`${omar.avatarURL}`)
-        .setFooter('name bot',client.user.avatarURL) 
+        .setFooter('Epic Bot',client.user.avatarURL) 
       message.channel.sendEmbed(embed);
     }
 });//t
