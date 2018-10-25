@@ -180,7 +180,7 @@ client.on("message", msg => {
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === '-' + "help") {
-         if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply(`
+         if(!message.guild.member(message.author).hasPermission("SEND_MESSAGES")) return message.reply(`
          
          **no permission**
          
@@ -194,32 +194,21 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  **
-
 ╔[❖══════════════════════❖]╗
-       اوامر المشرفين
+       اوامر البوت
 ╚[❖══════════════════════❖]╝
-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $kick <mention > ➾ لطرد الأعضاء
+ ❖ -top ➾ توب انفايت
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $clear ➾ لمسح الشات
+ ❖ -profile ➾ معلومات حسابك
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ $mute < mention > ➾ لإعطاء ميوت للإعضاء
+ ❖ -avatar < mention > ➾ افاتار الحساب
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $unmute <mention> ➾ لفك الميوت عن الأعضاء
+ ❖ -lock ➾ تقفيل الشات
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ $bc <message> ➾ لإرسال رسالة جماعية
+ ❖ -unlock ➾ فتح الشات
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $closeroms <message> ➾ لإغلاق الشات
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ $openroms <message> ➾ لفتح الشات
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $server <message> ➾ لمعرفة نبذه عن السيرفر
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $warn <message> ➾ لإعطاء انذار لأحد الأعضاء
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ $clear <message> ➾ لمسح الشات
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+**
 
 `);
 
