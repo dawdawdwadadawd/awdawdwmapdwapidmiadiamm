@@ -117,11 +117,11 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 client.on("ready", async () => {
     if(client.users.size > 1) {
-        client.user.setActivity(`With ${client.users.size} Member`);
-        console.log(`${client.user.username} With ${client.users.size} Member`)
+        client.user.setActivity(`-help | ${client.users.size} Player`);
+        console.log(`${client.user.username} With ${client.users.size} Player`)
     } else {
-        client.user.setActivity(`With ${client.users.size} Member`);
-        console.log(`${client.user.username} With ${client.users.size} Member`)
+        client.user.setActivity(`-help | ${client.users.size} Player`);
+        console.log(`${client.user.username} -help | ${client.users.size} Player`)
     }
     client.user.setStatus("online");
 });
@@ -129,18 +129,18 @@ client.on("ready", async () => {
 client.on("guildCreate", guild => {
     console.log("Joined a new guild: " + guild.name);
     if(client.users.size > 1) {
-        client.user.setActivity(`With ${client.users.size} Member`);
+        client.user.setActivity(`-help | ${client.users.size} Player`);
     } else {
-        client.user.setActivity(`With ${client.users.size} Member`);
+        client.user.setActivity(`-help | ${client.users.size} Player`);
     }
 });
 
 client.on("guildDelete", guild => {
     console.log("Left a guild: " + guild.name);
     if(client.users.size > 1) {
-        client.user.setActivity(`With ${client.users.size} Member`);
+        client.user.setActivity(`-help | ${client.users.size} Player`);
     } else {
-        client.user.setActivity(`With ${client.users.size} Member`);
+        client.user.setActivity(`-help | ${client.users.size} Player`);
     }
 });
 
