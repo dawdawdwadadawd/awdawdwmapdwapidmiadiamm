@@ -115,4 +115,99 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 });//t
 
+client.on("ready", async () => {
+    if(client.guilds.size > 1) {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+        console.log(`${client.user.username} is online on ${client.guilds.size} servers!`)
+    } else {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+        console.log(`${client.user.username} is online on ${client.guilds.size} server!`)
+    }
+    client.user.setStatus("online");
+});
+
+client.on("guildCreate", guild => {
+    console.log("Joined a new guild: " + guild.name);
+    if(client.guilds.size > 1) {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+    } else {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+    }
+});
+
+client.on("guildDelete", guild => {
+    console.log("Left a guild: " + guild.name);
+    if(client.guilds.size > 1) {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+    } else {
+        client.user.setActivity(`Im on ${client.guilds.size} servers!`);
+    }
+});
+
+client.on("message", async () => {
+  
+})//t
+
+client.on("ready", async () => {
+    if(client.users.size > 1) {
+        client.user.setActivity(`With ${client.users.size} Member`);
+        console.log(`${client.user.username} With ${client.users.size} Member`)
+    } else {
+        client.user.setActivity(`With ${client.users.size} Member`);
+        console.log(`${client.user.username} With ${client.users.size} Member`)
+    }
+    client.user.setStatus("online");
+});
+
+client.on("guildCreate", guild => {
+    console.log("Joined a new guild: " + guild.name);
+    if(client.users.size > 1) {
+        client.user.setActivity(`With ${client.users.size} Member`);
+    } else {
+        client.user.setActivity(`With ${client.users.size} Member`);
+    }
+});
+
+client.on("guildDelete", guild => {
+    console.log("Left a guild: " + guild.name);
+    if(client.users.size > 1) {
+        client.user.setActivity(`With ${client.users.size} Member`);
+    } else {
+        client.user.setActivity(`With ${client.users.size} Member`);
+    }
+});
+
+client.on("message", async () => {
+  
+})//t
+
+client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    return message.reply(`** No Invite Links :angry: !**`)
+    }
+}
+});//t
+
+client.on("message", msg => {
+  if(msg.content === '-' + "profile") {
+      const embed = new Discord.RichEmbed();
+  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
+          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
+          .setColor("RANDOM")
+          .setFooter(msg.author.username , msg.author.avatarURL)
+          .setThumbnail(`${msg.author.avatarURL}`)
+          .setTimestamp()
+          .setURL(`${msg.author.avatarURL}`)
+          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
+          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
+          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
+          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
+          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
+      msg.channel.send({embed: embed})
+  }
+});//t
+
 client.login(process.env.BOT_TOKEN);
