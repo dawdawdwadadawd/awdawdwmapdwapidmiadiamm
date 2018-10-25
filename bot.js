@@ -182,7 +182,7 @@ client.on('message', message => {
      if(msg.content === '-' + "help") {
          if(!message.guild.member(message.author).hasPermission("SEND_MESSAGES")) return message.reply(`
          
-         **لست من المشرفين لن يتم ارسال الرسالة إليك**
+         **no permission**
          
          
          `);
