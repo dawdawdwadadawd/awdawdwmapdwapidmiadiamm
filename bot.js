@@ -179,7 +179,7 @@ client.on("message", msg => {
 
 client.on('message', message => {
     if (message.author.bot) return;
-     if(msg.content === '-' + "help") {
+     if (message.content === prefix + "-help") {
          if(!message.guild.member(message.author).hasPermission("SEND_MESSAGES")) return message.reply(`
          
          **no permission**
