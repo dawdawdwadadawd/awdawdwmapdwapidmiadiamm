@@ -54,7 +54,7 @@ client.on('message',message =>{
   });
    
     }
-  });//t
+  });//t1
 
 client.on('message', message => {
     if (message.content.startsWith("-avatar")) {
@@ -76,7 +76,7 @@ client.on('message', message => {
         .setFooter('Epic Bot',client.user.avatarURL) 
       message.channel.sendEmbed(embed);
     }
-});//t
+});//t2
 
 client.on('message', message=> {
     if (message.author.bot) return;
@@ -84,7 +84,7 @@ client.on('message', message=> {
     {
     message.reply(" هلا !!");
     }
-});//t\
+});//t3
 
 client.on('message', message => {
 
@@ -113,7 +113,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-});//t
+});//t4
 
 client.on("ready", async () => {
     if(client.users.size > 1) {
@@ -146,7 +146,7 @@ client.on("guildDelete", guild => {
 
 client.on("message", async () => {
   
-})//t
+})//t5
 
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
@@ -156,7 +156,7 @@ client.on('message', message => {
     return message.reply(`** No Invite Links :angry: !**`)
     }
 }
-});//t
+});//t6
 
 client.on("message", msg => {
   if(msg.content === '-' + "profile") {
@@ -175,7 +175,7 @@ client.on("message", msg => {
           .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
       msg.channel.send({embed: embed})
   }
-});//t
+});//t7
 
 client.on('message', message => {
     if (message.author.bot) return;
@@ -213,6 +213,20 @@ client.on('message', message => {
 `);
 
     }
-});//t
+});//t8
+
+         client.on('message', message => {
+            if (message.content.startsWith(prefix + "bot")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField(' السيرفرات🌐',`[${client.guilds.size}]  `)
+.addField(' الاعضاء👥 ',` [${client.users.size}] `)
+.addField('الرومات📚 ',`[${client.channels.size}]`) 
+.addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
+.addField('مصمم  + صاحب البوت ',`Redx#9988`)
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});//t9
 
 client.login(process.env.BOT_TOKEN);
