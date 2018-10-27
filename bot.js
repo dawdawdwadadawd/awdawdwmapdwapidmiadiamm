@@ -227,7 +227,7 @@ client.on('message', message => {
         message.guild.fetchBans()
 		if(message.author.bot) return;
 if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply(' ليس لديك صلاحيات');
-		if(!args) return message.channel.send(`${bans.size} عدد اشخاص المحظوره من السيرفر `);
+		.then(bans => message.channel.send(`${bans.size} عدد اشخاص المحظوره من السيرفر `);
   .catch(console.error);
 }
 });//t10
