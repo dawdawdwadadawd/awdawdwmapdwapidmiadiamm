@@ -169,7 +169,6 @@ client.on('message', message => {
 الأوامر  
 -profile : معلومات الحساب
 -avatar : افاتار الحساب
--count : عدد الأعضاء
 -lock : تقفيل الشات
 -unlock : فتح الشات
 -bc : برودكاست
@@ -200,18 +199,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });//t8
-
-client.on('message', message => {
-              if (!message.channel.guild) return;
-      if(message.content =='-count')
-      var SaifDz = new Discord.RichEmbed()
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(message.author.username, message.author.avatarURL)
-      .setTitle('🌷| Members info')
-      .addBlankField(true)
-      .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
-      message.channel.send(SaifDz);
-    });//t7
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
