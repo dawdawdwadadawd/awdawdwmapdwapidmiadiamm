@@ -342,8 +342,11 @@ client.on("message", (message) => {
 });//t15
 
 client.on('message', function(msg) {
-    const prefix = '$'
+    const prefix = '-'
     if(msg.content.startsWith (prefix  + 'server')) {
+        if(!message.member.hasPermission('MANAGE_SERVER')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_SERVER`' );
+          message.channel.send(`
+   **
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -358,7 +361,10 @@ client.on('message', function(msg) {
       .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
       .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
-    }
+  **
+  `);
+  
+      }
   });//t16
 
 client.on('message' , message => {
