@@ -123,7 +123,6 @@ client.on('message', message => {
 
 
  اخرى
--invite  : لدعوة البوت الى سيرفرك
 -bot : معلومات البوت
 -ping : لمعرفة سرعة استجابة البوت في الوقت الحالي
 **
@@ -243,15 +242,5 @@ client.on('message' , message => {
  })
   }  
  });//t14
-
-client.on('message', message => {
-  if(message.content === '-invite') {
-  const embed = new Discord.RichEmbed()
-  .setTitle('Click here')
-  .setURL('https://discordapp.com/oauth2/authorize?client_id=505012947311919126&permissions=2080374975&scope=bot ')
-  .setColor('RANDOM')
-  message.channel.send({embed: embed});
-  }
-});//t15
 
 client.login(process.env.BOT_TOKEN);
