@@ -235,21 +235,6 @@ client.on('message', message => {
     }
 });//t9
 
-client.on ('message',async Sal => { //By Salto7#4595
-    let embed = new Discord.RichEmbed()
-    if (Sal.content === "-id") {
-      let embed = new Discord.RichEmbed()
-     .setColor("RANDOM")
-     .setThumbnail(Sal.author.avatarURL)
-     .setImage(Sal.author.avatarURL)
-     .addField("اسمك:",`${Sal.author.username}`, true)
-     .addField('ايديك:',"" +  Sal.author.id, true)
-     .addField('تاقك', Sal.author.discriminator, true)
-     .addField('تم الانشاء في', Sal.author.createdAt, true)
-     Sal.channel.sendEmbed(embed);
-    }
-  });//t10
-
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='-count')
@@ -260,7 +245,7 @@ client.on('message', message => {
       .addBlankField(true)
       .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
       message.channel.send(SaifDz);
-    });//t11
+    });//t10
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
@@ -268,7 +253,7 @@ client.on("guildMemberAdd", member => {
 :crown:اسم العضو  ${member}:crown:  
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
-})//t12
+})//t11
 
 client.on('message', message => {
     if (message.content.startsWith("-bans")) {
@@ -276,7 +261,7 @@ client.on('message', message => {
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
 }
-});//t13
+});//t12
 
 client.on('message',async message => {
   if (message.content === '-' + "setvoice") {
@@ -294,7 +279,7 @@ client.on('message',async message => {
     },1000);
   });
   }
-});//t14
+});//t13
 
 client.on('message', message => {
         var prefix = '-'; // هنا تقدر تغير البرفكس
@@ -339,7 +324,7 @@ client.on('message', message => {
 			});
 		})
 	}
-});//t15
+});//t14
 
 client.on("message", (message) => {
             if (message.channel.type === "dm") {
@@ -354,10 +339,10 @@ client.on("message", (message) => {
                     .setFooter(`DM Bot Messages | DM Logs`)
                 client.users.get("479836672775684106").send(yumz)
             }
-});//t16
+});//t15
 
 client.on('message', function(msg) {
-    const prefix = '-'
+    const prefix = '$'
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
@@ -374,7 +359,7 @@ client.on('message', function(msg) {
       .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
     }
-  });//t17
+  });//t16
 
 client.on('message' , message => {
   var prefix = "-";
@@ -384,28 +369,16 @@ client.on('message' , message => {
       msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
  })
   }  
- });//t18
+ });//t17
 
-client.on ("guildMemberAdd", member => {
-  
-   var role = member.guild.roles.find ("name", "● Member");
-   member.addRole (role);
-  
-})
-
-client.on ("guildMemberRemove", member => {
-   
-})//t19
-
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const stewart = member.guild.channels.find("name", "welcome");
-     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
-   //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
-  }); 
-});//t20
+client.on('message', message => {
+  if(message.content === '-invite') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('Click here')
+  .setURL('https://discordapp.com/oauth2/authorize?client_id=505012947311919126&permissions=2080374975&scope=bot ')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
+});//t18
 
 client.login(process.env.BOT_TOKEN);
