@@ -168,7 +168,6 @@ client.on('message', message => {
  **
 الأوامر العامة 
 -profile : معلومات الحساب
--id : الهوية
 -avatar : افاتار الحساب
 -count : عدد الأعضاء
 
@@ -204,7 +203,7 @@ client.on('message', message => {
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
-});//t6
+});//t8
 
 client.on('message', message => {
               if (!message.channel.guild) return;
@@ -224,7 +223,7 @@ client.on("guildMemberAdd", member => {
 :crown:اسم العضو  ${member}:crown:  
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
-})//t8
+})//t9
 
 client.on('message', message => {
     if (message.content.startsWith("-bans")) {
@@ -232,7 +231,7 @@ client.on('message', message => {
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
 }
-});//t9
+});//t10
 
 client.on('message',async message => {
   if (message.content === '-' + "setvoice") {
@@ -250,7 +249,7 @@ client.on('message',async message => {
     },1000);
   });
   }
-});//t10
+});//t11
 
 client.on('message', message => {
         var prefix = '-'; // هنا تقدر تغير البرفكس
@@ -295,7 +294,7 @@ client.on('message', message => {
 			});
 		})
 	}
-});//t11
+});//t12
 
 client.on("message", (message) => {
             if (message.channel.type === "dm") {
@@ -310,7 +309,7 @@ client.on("message", (message) => {
                     .setFooter(`DM Bot Messages | DM Logs`)
                 client.users.get("479836672775684106").send(yumz)
             }
-});//t12
+});//t13
 
 client.on('message' , message => {
   var prefix = "-";
@@ -320,7 +319,7 @@ client.on('message' , message => {
       msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
  })
   }  
- });//t13
+ });//t14
 
 client.on('message', message => {
   if(message.content === '-invite') {
@@ -330,6 +329,6 @@ client.on('message', message => {
   .setColor('RANDOM')
   message.channel.send({embed: embed});
   }
-});//t14
+});//t15
 
 client.login(process.env.BOT_TOKEN);
