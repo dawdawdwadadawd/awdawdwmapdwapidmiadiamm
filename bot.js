@@ -173,7 +173,6 @@ client.on('message', message => {
 -lock : تقفيل الشات
 -unlock : فتح الشات
 -bc : برودكاست
--bans : عدد الاشخاص المحظورين من السيرفر
 -setvoice : عمل روم عدد الاعضاء في رومات صوتيه
 
 
@@ -221,16 +220,6 @@ client.on("guildMemberAdd", member => {
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
 })//t9
-
-client.on('message', message => {
-    if (message.content.startsWith("-bans")) {
-        message.guild.fetchBans()
-		if(message.author.bot) return;
-if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply(' ليس لديك صلاحيات');
-		.then(bans => message.channel.send(`${bans.size} عدد اشخاص المحظوره من السيرفر `);
-  .catch(console.error);
-}
-});//t10
 
 client.on('message',async message => {
   if (message.content === '-' + "setvoice") {
