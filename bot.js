@@ -196,6 +196,8 @@ client.on('message', message => {
  **
 الأوامر العامة 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+ ❖ -server ➾ معلومات السيرفر
+ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -profile ➾ معلومات الحساب
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -id ➾ الهوية
@@ -215,8 +217,6 @@ client.on('message', message => {
  ❖ -lock ➾ تقفيل الشات
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -unlock ➾ فتح الشات
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -say ➾ اعادة كلامك
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -bc ➾ برودكاست
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -380,7 +380,7 @@ client.on('message', function(msg) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .setTitle(`Showing Details Of  **${msg.guild.name}**`)
       .addField('🌐** server type**',`[** __${msg.guild.region}__ **]`,true)
       .addField('🏅** __Roles__**',`[** __${msg.guild.roles.size}__ **]`,true)
       .addField('🔴**__ Members Number__**',`[** __${msg.guild.memberCount}__ **]`,true)
@@ -414,26 +414,5 @@ client.on ("guildMemberAdd", member => {
 client.on ("guildMemberRemove", member => {
    
 })//t19
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-if (command == "-say") {
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("*لا تملك الصلاحيات المطلوبه**");
-if(!args) return message.channel.send('-say <words>');
-
-message.channel.send(args.join("  "))
-    message.delete();
-  }
-
-
-
-});//t20
 
 client.login(process.env.BOT_TOKEN);
