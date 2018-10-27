@@ -194,24 +194,24 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  **
-        الأوامر العامة 
+الأوامر العامة 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ -bot ➾ معلومات البوت
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ ❖ -profile ➾ معلومات الحساب
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -id ➾ الهوية
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -top ➾ توب انفايت
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -profile ➾ معلومات الحساب
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -avatar ➾ افاتار الحساب
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -count ➾ عدد الأعضاء
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
-        أوامر ادارة السيرفر
+ أوامر ادارة السيرفر
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ ❖ -server ➾ معلومات السيرفر
+ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -lock ➾ تقفيل الشات
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
  ❖ -unlock ➾ فتح الشات
@@ -220,9 +220,15 @@ client.on('message', message => {
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -bans ➾ عدد الاشخاص المبندين من السيرفر
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -server ➾ معلومات السيرفر
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -setvoice ➾ عمل روم عدد الاعضاء في رومات صوتيه
+ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+ اخرى
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ ❖ -bot ➾ معلومات البوت
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ ❖ -ping ➾ لمعرفة سرعة استجابة البوت في الوقت الحالي
  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **
 
@@ -385,5 +391,26 @@ client.on('message', function(msg) {
       msg.channel.send({embed:embed});
     }
   });//t17
+
+client.on('message' , message => {
+  var prefix = "-";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "ping")) {
+ message.channel.send('Pong...').then((msg) => {
+      msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
+ })
+  }  
+ });//t18
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "● Member");
+   member.addRole (role);
+  
+})
+
+client.on ("guildMemberRemove", member => {
+   
+})//t19
 
 client.login(process.env.BOT_TOKEN);
