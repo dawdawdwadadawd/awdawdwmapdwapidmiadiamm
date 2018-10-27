@@ -195,41 +195,25 @@ client.on('message', message => {
  message.author.sendMessage(`
  **
 الأوامر العامة 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ -server ➾ معلومات السيرفر
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -profile ➾ معلومات الحساب
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ -id ➾ الهوية
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -top ➾ توب انفايت
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -avatar ➾ افاتار الحساب
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ -count ➾ عدد الأعضاء
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-server : معلومات السيرفر
+-profile : معلومات الحساب
+-id : الهوية
+-top : توب انفايت
+-avatar : افاتار الحساب
+-count : عدد الأعضاء
 
 
  أوامر ادارة السيرفر
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -lock ➾ تقفيل الشات
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- ❖ -unlock ➾ فتح الشات
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -bc ➾ برودكاست
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -bans ➾ عدد الاشخاص المبندين من السيرفر
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- ❖ -setvoice ➾ عمل روم عدد الاعضاء في رومات صوتيه
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-lock : تقفيل الشات
+-unlock : فتح الشات
+-bc : برودكاست
+-bans : عدد الاشخاص المبندين من السيرفر
+-setvoice : عمل روم عدد الاعضاء في رومات صوتيه
 
 
  اخرى
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -bot ➾ معلومات البوت
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
  ❖ -ping ➾ لمعرفة سرعة استجابة البوت في الوقت الحالي
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **
 
 `);
@@ -251,20 +235,20 @@ client.on('message', message => {
     }
 });//t9
 
-client.on('message', async message =>{
-
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-  let sicon = message.author.displayAvatarURL;
-  if(cmd === `-id`) {
-      var bots = new Discord.RichEmbed()
-
-      .setDescription(`** Your id: ${message.author.id}  **`)
-      .setColor('RANDOM')
-      message.channel.send(bots);
-  }
-});//t10
+client.on ('message',async Sal => { //By Salto7#4595
+    let embed = new Discord.RichEmbed()
+    if (Sal.content === "-id") {
+      let embed = new Discord.RichEmbed()
+     .setColor("RANDOM")
+     .setThumbnail(Sal.author.avatarURL)
+     .setImage(Sal.author.avatarURL)
+     .addField("اسمك:",`${Sal.author.username}`, true)
+     .addField('ايديك:',"" +  Sal.author.id, true)
+     .addField('تاقك', Sal.author.discriminator, true)
+     .addField('تم الانشاء في', Sal.author.createdAt, true)
+     Sal.channel.sendEmbed(embed);
+    }
+  });//t10
 
 client.on('message', message => {
               if (!message.channel.guild) return;
@@ -373,21 +357,21 @@ client.on("message", (message) => {
 });//t16
 
 client.on('message', function(msg) {
-    const prefix = '^'
-    if(msg.content.startsWith ('-server')) {
+    const prefix = '-'
+    if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **__${msg.guild.name}__**`)
-      .addField('🌐** server type**',`[** __${msg.guild.region}__ **]`,true)
-      .addField('🏅** __Roles__**',`[** __${msg.guild.roles.size}__ **]`,true)
-      .addField('🔴**__ Members Number__**',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField('🔵**__ Members Number who online__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-      .addField('📝**__ Text Channels__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField('🎤**__ voice Channels__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-      .addField('👑**__ The Owner__**',`**${msg.guild.owner}**`,true)
-      .addField('🆔**__ Server ID__**',`**${msg.guild.id}**`,true)
-      .addField('📅**__The date when the server created __**',msg.guild.createdAt.toLocaleString())
+      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+      .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+      .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
     }
   });//t17
@@ -412,5 +396,16 @@ client.on ("guildMemberAdd", member => {
 client.on ("guildMemberRemove", member => {
    
 })//t19
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const stewart = member.guild.channels.find("name", "welcome");
+     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
+   //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
+  }); 
+});//t20
 
 client.login(process.env.BOT_TOKEN);
