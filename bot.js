@@ -166,13 +166,10 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  **
-الأوامر العامة 
+الأوامر  
 -profile : معلومات الحساب
 -avatar : افاتار الحساب
 -count : عدد الأعضاء
-
-
- أوامر ادارة السيرفر
 -lock : تقفيل الشات
 -unlock : فتح الشات
 -bc : برودكاست
