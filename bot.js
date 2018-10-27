@@ -426,6 +426,7 @@ client.on('message', message => {
 
 if (command == "-say") {
 if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("*لا تملك الصلاحيات المطلوبه**");
+if(!args) return message.channel.send('-say <words>');
 
 message.channel.send(args.join("  "))
     message.delete();
