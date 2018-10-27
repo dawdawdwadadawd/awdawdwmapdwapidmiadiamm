@@ -225,6 +225,8 @@ client.on("guildMemberAdd", member => {
 client.on('message', message => {
     if (message.content.startsWith("-bans")) {
         message.guild.fetchBans()
+		if(message.author.bot) return;
+if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply(' ليس لديك صلاحيات');
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المحظوره من السيرفر `))
   .catch(console.error);
 }
@@ -254,7 +256,7 @@ client.on('message', message => {
 	if(command == prefix + 'bc') { // الكوماند !bc
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+if(!message.member.hasPermission('MANAGE_SERVER')) return message.reply(' ليس لديك صلاحيات');
 		if(!args) return message.channel.send(`**➥ Useage:** ${prefix}bc كلامك`);
 		
 		let bcSure = new Discord.RichEmbed()
