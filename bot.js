@@ -466,9 +466,9 @@ client.on('message', async message => {
 
 const shorten = require('isgd');
 client.on('message', message => {
-        var prefix = "#";
+        var prefix = "-";
 
- if (message.content.startsWith(prefix + '-short')) {
+ if (message.content.startsWith(prefix + 'short')) {
     let args = message.content.split(" ").slice(1);
   if (!args[0]) return message.channel.send('**Usage**: '+ prefix +'short <رابط>')
   if (!args[1]) { 
