@@ -28,34 +28,6 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.on('message',message =>{
-    var prefix = "-";
-    if(message.content.startsWith(prefix + 'top')) {
-  message.guild.fetchInvites().then(i =>{
-  var invites = [];
-   
-  i.forEach(inv =>{
-    var [invs,i]=[{},null];
-     
-    if(inv.maxUses){
-        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
-    }else{
-        invs[inv.code] =+ inv.uses;
-    }
-        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
-   
-  });
-  var embed = new Discord.RichEmbed()
-  .setColor("#000000")
-  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
-  .setThumbnail("https://media.discordapp.net/attachments/477570106755383307/479229377037598720/22713057_151850495552450_709700562_o.jpg?width=201&height=201")
-           message.channel.send({ embed: embed });
-   
-  });
-   
-    }
-  });//t1
-
 client.on('message', message => {
     if (message.content.startsWith("-avatar")) {
         if (message.author.bot) return
@@ -76,7 +48,7 @@ client.on('message', message => {
         .setFooter('Epic Bot',client.user.avatarURL) 
       message.channel.sendEmbed(embed);
     }
-});//t2
+});//t1
 
 client.on('message', message=> {
     if (message.author.bot) return;
@@ -84,7 +56,7 @@ client.on('message', message=> {
     {
     message.reply(" هلا !!");
     }
-});//t3
+});//t2
 
 client.on('message', message => {
 
@@ -113,7 +85,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-});//t4
+});//t3
 
 client.on("ready", async () => {
     if(client.users.size > 1) {
@@ -146,7 +118,7 @@ client.on("guildDelete", guild => {
 
 client.on("message", async () => {
   
-})//t5
+})//t4
 
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
@@ -156,7 +128,7 @@ client.on('message', message => {
     return message.reply(`** No Invite Links :angry: !**`)
     }
 }
-});//t6
+});//t5
 
 client.on("message", msg => {
   if(msg.content === '-' + "profile") {
@@ -175,7 +147,7 @@ client.on("message", msg => {
           .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
       msg.channel.send({embed: embed})
   }
-});//t7
+});//t6
 
 client.on('message', message => {
     if (message.author.bot) return;
@@ -195,10 +167,8 @@ client.on('message', message => {
  message.author.sendMessage(`
  **
 الأوامر العامة 
--server : معلومات السيرفر
 -profile : معلومات الحساب
 -id : الهوية
--top : توب انفايت
 -avatar : افاتار الحساب
 -count : عدد الأعضاء
 
@@ -212,14 +182,15 @@ client.on('message', message => {
 
 
  اخرى
- ❖ -bot ➾ معلومات البوت
- ❖ -ping ➾ لمعرفة سرعة استجابة البوت في الوقت الحالي
+-invite  : لدعوة البوت الى سيرفرك
+-bot : معلومات البوت
+-ping : لمعرفة سرعة استجابة البوت في الوقت الحالي
 **
 
 `);
 
     }
-});//t8
+});//t7
 
          client.on('message', message => {
             if (message.content === '-' + "bot") {
@@ -233,7 +204,7 @@ client.on('message', message => {
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
-});//t9
+});//t6
 
 client.on('message', message => {
               if (!message.channel.guild) return;
@@ -245,7 +216,7 @@ client.on('message', message => {
       .addBlankField(true)
       .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
       message.channel.send(SaifDz);
-    });//t10
+    });//t7
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
@@ -253,7 +224,7 @@ client.on("guildMemberAdd", member => {
 :crown:اسم العضو  ${member}:crown:  
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
-})//t11
+})//t8
 
 client.on('message', message => {
     if (message.content.startsWith("-bans")) {
@@ -261,7 +232,7 @@ client.on('message', message => {
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
 }
-});//t12
+});//t9
 
 client.on('message',async message => {
   if (message.content === '-' + "setvoice") {
@@ -279,7 +250,7 @@ client.on('message',async message => {
     },1000);
   });
   }
-});//t13
+});//t10
 
 client.on('message', message => {
         var prefix = '-'; // هنا تقدر تغير البرفكس
@@ -324,7 +295,7 @@ client.on('message', message => {
 			});
 		})
 	}
-});//t14
+});//t11
 
 client.on("message", (message) => {
             if (message.channel.type === "dm") {
@@ -339,33 +310,7 @@ client.on("message", (message) => {
                     .setFooter(`DM Bot Messages | DM Logs`)
                 client.users.get("479836672775684106").send(yumz)
             }
-});//t15
-
-client.on('message', function(msg) {
-    const prefix = '-'
-    if(msg.content.startsWith (prefix  + 'server')) {
-        if(!message.member.hasPermission('MANAGE_SERVER')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_SERVER`' );
-          message.channel.send(`
-   **
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
-      .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
-      .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
-      .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-      .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-      .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
-      .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
-      .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
-      msg.channel.send({embed:embed});
-  **
-  `);
-  
-      }
-  });//t16
+});//t12
 
 client.on('message' , message => {
   var prefix = "-";
@@ -375,7 +320,7 @@ client.on('message' , message => {
       msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
  })
   }  
- });//t17
+ });//t13
 
 client.on('message', message => {
   if(message.content === '-invite') {
@@ -385,6 +330,6 @@ client.on('message', message => {
   .setColor('RANDOM')
   message.channel.send({embed: embed});
   }
-});//t18
+});//t14
 
 client.login(process.env.BOT_TOKEN);
