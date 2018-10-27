@@ -254,6 +254,7 @@ client.on('message', message => {
 	if(command == prefix + 'bc') { // الكوماند !bc
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
 		if(!args) return message.channel.send(`**➥ Useage:** ${prefix}bc كلامك`);
 		
 		let bcSure = new Discord.RichEmbed()
