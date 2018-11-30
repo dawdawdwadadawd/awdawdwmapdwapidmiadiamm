@@ -243,4 +243,21 @@ client.on('message' , message => {
   }  
  });//t14
 
+client.on('message', message => {
+    if(message.content === ('-' + 'admins')) {
+        const embed = new Discord.RichEmbed()
+        .setTitle('Testing Server Admins')
+        .setColor(0xFF0000)
+        .setDescription('List of server admins')
+        .setTimestamp()
+        .setThumbnail(message.author.avatarURL)
+        .setFooter(`Requested By ${message.author.tag} ` ,  message.author.avatarURL)
+        .setURL("https://discord.gg/4KjRhND")
+        .addField('Server Owner' , 'Hide#3646')
+        .addField('Server Owner' , 'Redx#9988')
+        .addField('Server Developer' , 'OrochiX#9177')
+        message.channel.send(embed);
+    }
+}); //tt15
+
 client.login(process.env.BOT_TOKEN);
